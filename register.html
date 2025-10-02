@@ -82,7 +82,10 @@
         $.validator.addMethod("checkInvalidChar", function(otherName, element) {
             return this.optional(element) || otherName.match(/(.*[a-z])(?=.*[A-Z])(.*\d)/g)
         }, "Must have at least one uppercase, lowercase, and number");
-
+     
+        if (performance.navigation.type === 1) {
+        sessionStorage.clear();
+        }
         $(document).ready(function() {          
             $("#loginForm").validate({
                 rules: {
@@ -132,6 +135,7 @@
                 errorElement: "div",
 
                 submitHandler: function(form) {
+                    let testData = $('#username').val().trim();
                     if (storeUserData()){
                         alert("Registration Successful!");
                     } else {
@@ -144,9 +148,9 @@
             });
 
             // console.log(sessionStorage.getItem("userKeyUname"));
-            let usernameElement = document.getElementById("username");
-            usernameElement.addEventListener('keyup', function() {
-            document.getElementById("test").value = usernameElement.value;})
+            // let usernameElement = document.getElementById("username");
+            // usernameElement.addEventListener('keyup', function() {
+            // document.getElementById("test").value = usernameElement.value;})
 
             function storeUserData(){
                 try {

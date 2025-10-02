@@ -71,11 +71,11 @@ form button {
 
 .modalParent {
     position: fixed;
-    width: 40%;
-    height: 200px;
-    top: 30%;
-    left: 30%;
-    background-color: rgba(0, 0, 0, 0.842);
+    width: fit-content;
+    height: fit-content;
+    bottom:  0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.171);
     display: flex;
     justify-content: center;
     align-items: center;
