@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <!-- // Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/index.css">
+    <!-- Logo -->
+    <link rel="shortcut icon" href="img/big_cat.jpg" type="image/x-icon">
+    <!-- jquery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.21.0/jquery.validate.min.js" integrity="sha512-KFHXdr2oObHKI9w4Hv1XPKc898mE4kgYx58oqsc/JqqdLMDI4YjOLzom+EMlW8HFUd0QfjfAvxSL6sEq/a42fQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="js/auth.js"></script>
+    <style>
+        .mainCard {
+            margin-top: 100px !important;
+            margin-bottom: 100px !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="mainCard mx-auto p-4 container-fluid">
+        <form id="loginForm" method="">
+            <h2 class="text-center mb-3">Register</h2>
+            <div class="mb-3">
+                <label for="username" class="form-label">Username</label>
+                <input type="text" class="form-control" placeholder="Enter your username" id="username" name="uname" autocomplete="on">
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" placeholder="Enter your email" id="email" name="email" autocomplete="on">
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" name="pass" placeholder="Enter your password">
+            </div>
+            <div class="mb-3">
+                <label for="rePass" class="form-label">Re-type Password</label>
+                <input type="password" class="form-control" id="rePass" name="rePass" placeholder="Re-enter your password">
+            </div>
+            <div class="text-end mb-1" id="text-forgot">
+                <a href="">Forgot Password?</a>
+            </div>
+            <div id="loginBtn">
+                <button type="submit" class="btn btn-primary" id="submit-btn" >Login</button>
+            </div>
+        </form>
+        <div>
+            <div id="textReg" class="text-start">
+                <p>Do have account? <a href="index.html">Login</a> </p> 
+            </div>
+            <!-- <div>       
+                <input type="text" id="test" name="tests" readonly>
+            </div> -->
+        </div>
+    </div>
+
+        <!-- <div class="modalParent">
+            <div id="customModal" class="modal-hidden">
+                <div class="modal-content">
+                
+                    <h2>Alert!</h2>
+                
+                    <p class="modal-text">
+                        This is a very simple, centered pop-up message, styled only with standard CSS.
+                    </p>
+                
+                    <button id="closeModalButton" class="simple-button modal-close-button">
+                        OK
+                    </button>   
+            </div>
+        </div> -->
+    </div>
+
+
+
+
+
+    <script>
+        $.validator.addMethod("checkInvalidChar", function(otherName, element) {
+            return this.optional(element) || otherName.match(/(.*[a-z])(?=.*[A-Z])(.*\d)/g)
+        }, "Must have at least one uppercase, lowercase, and number");
+
+        $(document).ready(function() {          
+            $("#loginForm").validate({
+                rules: {
+                    // uname: {
+                    //     required: true,
+                    //     minlength: 8,
+                    //     maxlength: 30,
+                    //     checkInvalidChar: true
+                    // },
+                    // pass: {
+                    //     required: true,
+                    //     minlength: 6,
+                    //     maxlength: 20
+                    // },
+                    // email: {
+                    //     required: true,
+                    //     email: true
+                    // },
+                    // rePass: {
+                    //     required: true,
+                    //     equalTo: "#password"
+                    // }
+
+                },
+                messages: {
+                    uname: {
+                        required: "Enter your username or else",
+                        minlength: "Need at least 8 characters Loooong",
+                        maxlength: "So Long, You just need 30 maximum character long"
+                    } ,
+                    pass: {
+                        required: "You forgot add this Password",
+                        minlength: "Please, It is rerquire to at least 6 characters",
+                        maxlength: "Do not exceed 20 characters"
+                    },
+                    email: {
+                        required: "Add Email Plsss..",
+                        email: "Can you input in the correct format like name@domail.com"
+                    },
+                    rePass: {
+                        required: "It is obvious that this is Require",
+                        equalTo: "They Don't Match"
+                    }
+                },  
+                errorClass: "is-invalid",
+                validClass: "is-valid",
+                errorElement: "div",
+
+                submitHandler: function(form) {
+                    if (storeUserData()){
+                        alert("Registration Successful!");
+                    } else {
+                        alert("Error Register user data. Please try again.");
+                    }
+                    window.location.href = "index.html";
+                }
+                
+
+            });
+
+            // console.log(sessionStorage.getItem("userKeyUname"));
+            let usernameElement = document.getElementById("username");
+            usernameElement.addEventListener('keyup', function() {
+            document.getElementById("test").value = usernameElement.value;})
+
+            function storeUserData(){
+                try {
+                    const user = {
+                        uNameData: $('#username').val().trim(),
+                        uEmailData: $('#email').val().trim(),
+                        uPassData: $('#password').val().trim()
+                    };
+
+                    let userData = JSON.stringify(user);
+                    var keyName = 'userKey' + sessionStorage.length;
+                    sessionStorage.setItem(keyName, userData);
+                    return true;
+                } catch (error) {
+                    console.log("Error storing user data: ", error);
+                    return false;
+                }
+
+
+                
+            }
+
+            for (i = 0; i < sessionStorage.length; i++){
+                const retrievedObject = JSON.parse(sessionStorage.getItem('userKey' + i));
+                console.log(retrievedObject);
+                
+            }
+        })
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</body>
+</html>

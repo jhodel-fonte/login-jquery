@@ -1,0 +1,104 @@
+body {
+    background-image: url("../img/bg-image.jpg");
+    background-position: center;
+
+    margin: 0;
+    padding: 0; 
+    color: white; 
+    height: fit-content;
+}
+
+.mainCard {
+    width: 400px; 
+    height: fit-content;
+    margin-top: 20vh;
+    margin-bottom: 20vh;
+    /* From https://css.glass */
+    background: rgba(0, 0, 0, 0.541);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(17px);
+    -webkit-backdrop-filter: blur(17px);
+    border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.mainCard input[type="text"], .mainCard input[type="password"], .mainCard input[type="email"] {
+    background: transparent;
+    border: 1px solid white;
+    border-radius: 20px;
+    color: white;
+}
+
+ .mainCard input::placeholder {
+    background: transparent;
+    color: white;
+    /* background-color: aqua; */
+}
+
+#forgotPassword {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+form button {
+    width: 100%;
+    margin-bottom: 10px;
+    border-radius: 20px !important;
+    background-color: rgba(34, 206, 100, 0.815) !important;
+    color: black !important;
+    font-weight: bold;
+    border: none !important;
+}
+
+#textReg a, #text-forgot a {
+    color: white !important;
+    text-decoration: none !important;
+    font-weight: bold;
+}
+#textReg a:hover, #text-forgot a:hover {
+    text-decoration: underline !important;
+    color: white !important;
+}
+
+.is-invalid {
+    color: #f75252;
+    /* font-weight: bolder; */
+}
+
+.is-valid {
+    color: green;
+}
+
+.modalParent {
+    position: fixed;
+    width: 40%;
+    height: 200px;
+    top: 30%;
+    left: 30%;
+    background-color: rgba(0, 0, 0, 0.842);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+#customModal {
+    color: white;
+    /* font-weight: bold; */
+    text-align: center;
+    /* font-size: 20px; */
+}
+
+@media (max-width: 425px) {
+    .mainCard {
+        width: 90%;
+        margin-top: 10vh;
+    }
+}
+
+@media (max-width: 320px) {
+    .mainCard {
+        width: 270px;
+        
+    }
+}
