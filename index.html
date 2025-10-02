@@ -41,9 +41,9 @@
             </div> -->
         </div>
     </div>
-        <div class="modalParent">
+        <!-- <div class="modalParent">
             <p>Notif: Must be Close the browser to clear data</p>
-        </div>
+        </div> -->
 
     <script>
         if (performance.navigation.type === 1) {
@@ -53,16 +53,16 @@
         $(document).ready(function() {          
             $("#loginForm").validate({
                 rules: {
-                    // uname: {
-                    //     required: true,
-                    //     minlength: 8,
-                    //     maxlength: 30
-                    // },
-                    // pass: {
-                    //     required: true,
-                    //     minlength: 6,
-                    //     maxlength: 20
-                    // }
+                    uname: {
+                        required: true,
+                        minlength: 8,
+                        maxlength: 30
+                    },
+                    pass: {
+                        required: true,
+                        minlength: 6,
+                        maxlength: 20
+                    }
                 },
                 messages: {
                     uname: {

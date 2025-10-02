@@ -89,25 +89,25 @@
         $(document).ready(function() {          
             $("#loginForm").validate({
                 rules: {
-                    // uname: {
-                    //     required: true,
-                    //     minlength: 8,
-                    //     maxlength: 30,
-                    //     checkInvalidChar: true
-                    // },
-                    // pass: {
-                    //     required: true,
-                    //     minlength: 6,
-                    //     maxlength: 20
-                    // },
-                    // email: {
-                    //     required: true,
-                    //     email: true
-                    // },
-                    // rePass: {
-                    //     required: true,
-                    //     equalTo: "#password"
-                    // }
+                    uname: {
+                        required: true,
+                        minlength: 8,
+                        maxlength: 30,
+                        checkInvalidChar: true
+                    },
+                    pass: {
+                        required: true,
+                        minlength: 6,
+                        maxlength: 20
+                    },
+                    email: {
+                        required: true,
+                        email: true
+                    },
+                    rePass: {
+                        required: true,
+                        equalTo: "#password"
+                    }
 
                 },
                 messages: {
