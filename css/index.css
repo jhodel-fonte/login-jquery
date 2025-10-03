@@ -1,5 +1,4 @@
 body {
-    background-image: url("../img/Firefly\ make\ shooting\ star\ move\ and\ other\ object\ in\ place\ 230984\ \(1\).gif");
     background-position: center;
     background-repeat: no-repeat;    
     background-size: cover;        
@@ -7,6 +6,9 @@ body {
     margin: 0;
     padding: 0; 
     color: white; 
+}
+.bg-img {
+
 }
 
 .mainCard {
