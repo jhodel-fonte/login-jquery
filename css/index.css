@@ -1,17 +1,17 @@
 body {
-    background-image: url("../img/bg-image.jpg");
+    background-image: url("https://images2.alphacoders.com/135/thumb-1920-1355608.png");
     background-position: center;
-
     margin: 0;
     padding: 0; 
     color: white; 
-    height: fit-content;
 }
 
 .mainCard {
     width: 400px; 
+    padding: 32px;
     height: fit-content;
     margin-top: 20vh;
+    margin-right: 100px;
     margin-bottom: 20vh;
     /* From https://css.glass */
     background: rgba(0, 0, 0, 0.541);
@@ -69,19 +69,6 @@ form button {
     color: green;
 }
 
-.modalParent {
-    position: fixed;
-    width: fit-content;
-    height: fit-content;
-    bottom:  0;
-    left: 0;
-    background-color: rgba(0, 0, 0, 0.171);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-}
-
 #customModal {
     color: white;
     /* font-weight: bold; */
@@ -89,16 +76,40 @@ form button {
     /* font-size: 20px; */
 }
 
+.card-pos {
+    display: flex;
+    justify-content: flex-end; /* Aligns card to the right */
+    align-items: flex-start;   /* Aligns card to the top */
+    width: 100vw;
+    min-height: 100vh;
+    box-sizing: border-box;
+    padding-right: 5vw;        /* Space from the right edge */
+    padding-top: 5vh;          /* Space from the top */
+}
+
+@media (max-width: 622px) {
+    .card-pos {
+        justify-content: center; /* Center card on small screens */
+        padding-right: 0;
+        padding-top: 5vh;
+    }
+    .mainCard {
+        margin: 10%;
+        padding: 50px;
+    }
+}
+
 @media (max-width: 425px) {
     .mainCard {
-        width: 90%;
-        margin-top: 10vh;
+        width: 98%;
+        padding: 50px;
+        margin: 10%;
     }
 }
 
 @media (max-width: 320px) {
     .mainCard {
-        width: 270px;
-        
+        width: 98%;
+        padding: 5px;
     }
 }
