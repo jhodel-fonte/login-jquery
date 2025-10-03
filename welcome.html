@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+
+    <link rel="icon" href="img/cat-logo.png" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/index.css">
+
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 50%;
+            color: white;
+            text-shadow: 2px 2px 4px #000000;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="container">
+        <h1 class="wel-text" id="text-wel">Welcome</h1>
+        <p>You have successfully logged in!</p>
+        <p class="text-danger">This Page is Under Constuction by RJEF for Personal Project. Coming Soon</p>
+        <button type="button" class="btn btn-danger" id="logoutBtn">LogOut</button>
+    </div>
+
+    <script>
+        if (performance.navigation.type === 1) {
+            alert("Refreshed! All Data Will CLeared");
+            sessionStorage.clear();
+        } 
+
+
+        let user = sessionStorage.getItem("curentUser");
+        console.log("Current User: " + user);
+        
+        if (!user) {
+            alert("Invalid Login! Returning To Login Page!")
+            window.location.href = "index.html";
+        }
+        
+        var textWel = "Welcome, User " + user + "!";
+        console.log(textWel);
+
+        document.querySelector('.container h1').textContent = textWel;
+        document.getElementById("text-wel").value = textWel;
+
+        var logButton = document.getElementById("logoutBtn");
+
+        logButton.addEventListener('click', function() {
+            alert("You Have Successfully LogOut, But the data still retained unless Refreshed!");
+            sessionStorage.removeItem("currentUser");
+            window.location.href = "index.html";    
+        })
+       
+        console.log('It will Clear All Account if the page is Refreshed');
+        console.log('List of Account Register:');
+
+        for (let i = 0; i < sessionStorage.length; i++) {
+            let user = "userKey" + i;
+            let retrievedObject = sessionStorage.getItem('userKey' + i);
+            if (!retrievedObject) continue;
+            let data = JSON.parse(retrievedObject);
+            console.log(data.uNameData + " | " + data.uEmailData);
+        }
+
+        var listElement = document.getElementById("listAccount");
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</body>
+</html>
