@@ -74,10 +74,6 @@
         </div> -->
     </div>
 
-
-
-
-
     <script>
         $.validator.addMethod("checkInvalidChar", function(otherName, element) {
             return this.optional(element) || otherName.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/g)
